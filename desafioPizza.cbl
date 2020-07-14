@@ -29,8 +29,12 @@
        77 menu                                     pic x(1).
        77 controle                                 pic x(10).
        77 pi                                       pic 9(1)v99.
-       77 aux                                      pic 9(10).
-       77 nomeAux                                  pic a(10).
+       77 aux                                      pic 9(10)v99.
+       77 nomeAux                                  pic a(15).
+       77 diamAux                                  pic 9(3)v99.
+       77 precoAux                                 pic 9(3)v99.
+       77 areaPizzaAux                             pic 9(3)v99.
+
        77 qtdPizza                                 pic 9(2).
 
       *   variáveis da tabela
@@ -41,7 +45,7 @@
            05 filler                               pic x(3) value ' | '.
            05 preco                                pic 9(3)v99.
            05 filler                               pic x(3) value ' | '.
-           05 areapizza                             pic 9(3)v99.
+           05 areapizza                            pic 9(3)v99.
            05 filler                               pic x(3) value ' | '.
            05 preco_cm2                            pic 9(3)v99.
            05 filler                               pic x(3) value ' | '.
@@ -171,7 +175,7 @@
                move 1 to ind
                move 'N_trocou' to controle
                perform until ind = qtdPizza
-                   if preco_cm2(ind) > preco_cm2(ind + 1)
+                   if preco_cm2(ind) > preco_cm2(ind + 1) then
       *                organizando a variável preços_cm2
                        move preco_cm2(ind + 1) to aux
                        move preco_cm2(ind) to preco_cm2(ind + 1)
@@ -183,19 +187,19 @@
                        move nomeAux to nome(ind)
 
       *                organizando a variável diâmetro
-                       move diametro(ind + 1) to aux
+                       move diametro(ind + 1) to diamAux
                        move diametro(ind) to diametro(ind + 1)
-                       move aux to diametro(ind)
+                       move diamAux to diametro(ind)
 
       *                organizando a variável preco
-                       move preco(ind + 1) to aux
+                       move preco(ind + 1) to precoAux
                        move preco(ind) to preco(ind + 1)
-                       move aux to preco(ind)
+                       move precoAux to preco(ind)
 
       *                organizando a variável areapizza
-                       move areapizza(ind + 1) to aux
+                       move areapizza(ind + 1) to areaPizzaAux
                        move areapizza(ind) to areapizza(ind + 1)
-                       move aux to areapizza(ind)
+                       move areaPizzaAux to areapizza(ind)
 
       *                para continuar fazendo a organização
                        move 'trocou' to controle
